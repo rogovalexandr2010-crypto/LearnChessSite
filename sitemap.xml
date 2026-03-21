@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://rogovalexandr2010-crypto.github.io/LearnChessSite/">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://top-learn-chess.netlify.app/</loc>
+    <loc>https://rogovalexandr2010-crypto.github.io/LearnChessSite/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
