@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://top-learn-chess.netlify.app/">
 <meta property="og:locale" content="ru_RU">
-<link rel="canonical" href="https://top-learn-chess.netlify.app/">
+<link rel="canonical" href="https://rogovalexandr2010-crypto.github.io/LearnChessSite/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzE2MTYxOCIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyNCIgZm9udC1zaXplPSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2M4ZjEzNSIgZm9udC1mYW1pbHk9InNlcmlmIj7imZ48L3RleHQ+Cjwvc3ZnPg==">
 <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzE2MTYxOCIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyNCIgZm9udC1zaXplPSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2M4ZjEzNSIgZm9udC1mYW1pbHk9InNlcmlmIj7imZ48L3RleHQ+Cjwvc3ZnPg==">
 <script type="application/ld+json">
@@ -906,6 +906,85 @@ input[type=range].storm-slider::-webkit-slider-thumb{-webkit-appearance:none;wid
 .r-sel:focus{border-color:var(--lime)}.r-sel option{background:var(--surface)}
 .ch-hint{font-size:11px;color:var(--gray);text-align:right;margin-top:2px}
 
+
+/* ═══ COURSES MODULE ═══════════════════════════════ */
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.course-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px 24px;cursor:pointer;transition:all .25s;animation:fadeUp .3s ease both}
+.course-card:hover{border-color:rgba(255,255,255,.18);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.cc-icon{font-size:34px;margin-bottom:14px}
+.cc-title{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-.2px}
+.cc-desc{font-size:12px;color:var(--gray);font-weight:500;line-height:1.55;margin-bottom:14px;min-height:36px}
+.cc-foot{display:flex;align-items:center;gap:10px}
+.cc-count{font-size:11px;font-weight:700;color:var(--lime);background:var(--lime-bg);padding:3px 9px;border-radius:20px}
+.cc-prog{font-size:11px;color:var(--gray);font-weight:600}
+/* Lesson list */
+.cl-item{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .2s;animation:fadeUp .25s ease both;margin-bottom:10px}
+.cl-item:hover{border-color:rgba(255,255,255,.16);transform:translateX(4px)}
+.cl-item.done{border-color:rgba(200,241,53,.25);background:rgba(200,241,53,.04)}
+.cl-num{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--gray);flex-shrink:0}
+.cl-item.done .cl-num{background:var(--lime);border-color:var(--lime);color:#111}
+.cl-body{flex:1;min-width:0}
+.cl-title{font-size:14px;font-weight:700;margin-bottom:3px}
+.cl-preview{font-size:11px;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-arrow{color:var(--gray);font-size:16px;flex-shrink:0;transition:color .2s}
+.cl-item:hover .cl-arrow{color:var(--lime)}
+/* Lesson view */
+.lv-layout{flex:1;display:flex;gap:24px;align-items:center;justify-content:space-between;padding:0 11cm}
+.lv-left{position:relative;flex-shrink:0}
+.lv-right{flex:1;display:flex;flex-direction:column;gap:14px;min-width:220px;max-width:340px}
+
+/* Move annotation badge on board */
+.move-anno-badge{
+  position:fixed;
+  background:#1a1a1a;
+  border:2px solid var(--amber);
+  color:var(--amber);
+  font-size:13px;
+  font-weight:800;
+  border-radius:7px;
+  padding:1px 5px;
+  pointer-events:none;
+  z-index:30;
+  line-height:1.4;
+  transform:translate(-50%,-50%);
+  animation:annoPop .25s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.6);
+}
+@keyframes annoPop{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.lv-commentary{font-size:14px;line-height:1.8;color:rgba(240,240,240,.88);white-space:pre-wrap}
+.lv-commentary b{color:var(--lime)}
+#lv-board-wrap{position:relative;width:clamp(320px,calc(100vh - 210px),520px);height:clamp(320px,calc(100vh - 210px),520px);flex-shrink:0;border-radius:10px;overflow:hidden;margin:auto 0}
+.lv-board-wrap svg{position:absolute;top:0;left:0;pointer-events:none;z-index:10}
+.lv-status{font-size:13px;font-weight:600;padding:11px 14px;background:var(--surface);border-radius:10px;border-left:3px solid var(--lime);line-height:1.45;width:100%;max-width:360px}
+.lv-status.err{border-left-color:var(--red);color:#ff9999}
+.lv-status.ok{border-left-color:var(--lime);color:var(--lime)}
+.lv-hint-box{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 13px;font-size:12px;line-height:1.55;width:100%;max-width:360px;display:none}
+.lv-hint-box.show{display:block;animation:fadeUp .2s ease}
+.lv-principle{background:var(--lime-bg);border:1px solid rgba(200,241,53,.2);border-radius:10px;padding:11px 14px;font-size:13px;line-height:1.6;width:100%;max-width:360px;display:none}
+.lv-btns{display:flex;gap:8px;flex-wrap:wrap;width:100%;max-width:360px}
+.lv-hint-btn{background:none;border:1px solid var(--border);color:var(--gray);padding:8px 16px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;transition:all .2s}
+.lv-hint-btn:hover{border-color:var(--lime);color:var(--lime)}
+/* choice buttons */
+.choice-btns{display:flex;flex-direction:column;gap:8px;width:100%;max-width:360px}
+.choice-opt-btn{background:var(--surface);border:1.5px solid var(--border);color:var(--white);padding:11px 16px;border-radius:11px;cursor:pointer;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;transition:all .2s;text-align:left}
+.choice-opt-btn:hover{border-color:rgba(255,255,255,.2);background:var(--surface2)}
+.choice-opt-btn.correct{border-color:var(--lime);background:var(--lime-bg);color:var(--lime)}
+.choice-opt-btn.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+/* progress */
+.lv-progress{height:3px;background:var(--border);border-radius:99px;overflow:hidden;margin-top:4px}
+.lv-progress-fill{height:100%;background:var(--lime);border-radius:99px;transition:width .4s}
+/* complete screen */
+.lesson-done{text-align:center;padding:48px 24px;animation:fadeUp .3s ease}
+.ld-icon{font-size:56px;margin-bottom:16px}
+.ld-title{font-size:24px;font-weight:800;margin-bottom:6px}
+.ld-sub{font-size:13px;color:var(--gray);margin-bottom:28px}
+@media(max-width:900px){
+  .lv-layout{flex-direction:column;padding:0 14px}
+  .lv-left{display:flex;justify-content:center}
+  .lv-right{max-width:100%!important;min-width:0!important}
+  .lv-board-wrap{width:clamp(280px,80vw,420px);height:clamp(280px,80vw,420px)}
+}
+
 </style>
 <script>
 (function(){
@@ -980,9 +1059,7 @@ input[type=range].storm-slider::-webkit-slider-thumb{-webkit-appearance:none;wid
 
     <!-- REGISTER -->
     <div id="auth-sec-register" class="hidden">
-      <!-- Step 1: fill form -->
-      <div id="auth-reg-step1">
-        <div class="form-group">
+      <div class="form-group">
           <label>Email</label>
           <input type="email" class="form-input" id="auth-reg-email" placeholder="you@example.com">
         </div>
@@ -1002,33 +1079,8 @@ input[type=range].storm-slider::-webkit-slider-thumb{-webkit-appearance:none;wid
         </div>
         <div class="modal-actions" style="margin-top:8px">
           <button class="btn-cancel" onclick="closeAuthModal()">Отмена</button>
-          <button class="btn-confirm" id="auth-reg-send-btn" onclick="AuthModule.sendCode()">Получить код →</button>
+          <button class="btn-confirm" id="auth-reg-btn" onclick="AuthModule.register()">Зарегистрироваться ✓</button>
         </div>
-      </div>
-
-      <!-- Step 2: enter code -->
-      <div id="auth-reg-step2" class="hidden">
-        <div style="text-align:center;margin-bottom:20px">
-          <div style="font-size:32px;margin-bottom:8px">📬</div>
-          <div style="font-size:14px;font-weight:700;color:var(--white)" id="auth-reg-sent-to"></div>
-          <div style="font-size:12px;color:var(--gray);margin-top:4px">Код действителен 10 минут</div>
-        </div>
-        <div class="form-group">
-          <label>Код из письма</label>
-          <input type="text" class="form-input" id="auth-reg-code"
-            placeholder="_ _ _ _ _ _"
-            maxlength="6"
-            style="font-size:24px;font-weight:800;letter-spacing:8px;text-align:center;font-family:'Bebas Neue',sans-serif"
-            oninput="this.value=this.value.replace(/\D/g,'')">
-        </div>
-        <div class="modal-actions" style="margin-top:8px">
-          <button class="btn-cancel" onclick="AuthModule.backToRegStep1()">← Назад</button>
-          <button class="btn-confirm" onclick="AuthModule.confirmCode()">Создать аккаунт ✓</button>
-        </div>
-        <div style="text-align:center;margin-top:12px">
-          <button onclick="AuthModule.resendCode()" style="background:none;border:none;color:var(--gray);font-size:12px;cursor:pointer;font-family:'Manrope',sans-serif;text-decoration:underline">Отправить повторно</button>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -1053,7 +1105,7 @@ input[type=range].storm-slider::-webkit-slider-thumb{-webkit-appearance:none;wid
         <div class="card-top"><div class="card-title">Задачи</div><div class="card-arrow">&#8599;</div></div>
         <div>
           <div class="card-icon">&#9823;</div>
-          <div class="card-quote">«Шахматные задачи — это поэзия шахматной игры.» — Рихард Рети</div>
+          <div class="card-quote">«Тактика — это серия ходов, которые вынуждают исход.» — Рудольф Шпильман</div>
         </div>
       </div>
       <div class="card card-dark card-orange" onclick="openStormSetup()">
@@ -1065,6 +1117,91 @@ input[type=range].storm-slider::-webkit-slider-thumb{-webkit-appearance:none;wid
       </div>
     </div>
   </div>
+</div>
+</div>
+
+
+<!-- ═══ VIEW: Список курсов ═══════════════════════════ -->
+<div id="view-courses" class="view">
+<div class="inner-page">
+  <div class="page-header">
+    <button class="btn-back" onclick="goBack()">&#8592; Назад</button>
+    <h1 class="page-title">Курсы</h1>
+  </div>
+  <div id="courses-container">
+    <div class="lib-loading"><div class="odb-spinner"></div>Загрузка курсов…</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ VIEW: Уроки курса ══════════════════════════════ -->
+<div id="view-course-detail" class="view">
+<div class="inner-page">
+  <div class="page-header">
+    <button class="btn-back" onclick="goBack()">&#8592; Назад</button>
+    <h1 class="page-title" id="cd-title">Курс</h1>
+    <span id="cd-progress" style="font-size:13px;font-weight:600;color:var(--gray)"></span>
+  </div>
+  <div id="cd-desc" style="font-size:13px;color:var(--gray);margin-bottom:20px;max-width:600px"></div>
+  <div id="cd-lessons-list"></div>
+</div>
+</div>
+
+<!-- ═══ VIEW: Урок ══════════════════════════════════════ -->
+<div id="view-course-lesson" class="view">
+<div class="learn-page">
+  <div style="margin:0 9cm;padding:16px 0 0;border-bottom:1px solid var(--border)">
+    <div class="page-header" style="margin-bottom:8px;padding-bottom:0;border-bottom:none">
+      <button class="btn-back" onclick="goBack()">&#8592; Назад</button>
+      <h1 class="page-title" id="lv-title" style="font-size:17px"></h1>
+      <span class="phase-badge" id="lv-badge">Теория</span>
+    </div>
+    <div class="lv-progress"><div class="lv-progress-fill" id="lv-progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Задание — точно как в задачах -->
+  <div id="lv-sec-task" class="learn-content" style="padding-bottom:32px">
+
+    <!-- Доска слева -->
+    <div style="display:flex;flex-direction:column">
+      <div id="lv-turn-lbl" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;font-weight:700;min-height:22px"></div>
+      <div id="lv-board-wrap" style="position:relative;width:clamp(320px,calc(100vh - 210px),520px);height:clamp(320px,calc(100vh - 210px),520px);flex-shrink:0;border-radius:10px;overflow:hidden;margin:auto 0">
+        <div id="lv-practice-board"></div>
+        <svg id="lv-expl-svg" style="position:absolute;top:0;left:0;pointer-events:none;z-index:10;width:100%;height:100%"></svg>
+      </div>
+    </div>
+
+    <!-- Сайдбар справа — как в задачах -->
+    <div class="learn-sidebar" style="justify-content:flex-end">
+      <div class="lv-commentary" id="lv-commentary"></div>
+      <div id="lv-step-divider" style="display:none;height:1px;background:var(--border)"></div>
+      <div class="lv-status" id="lv-status">Загрузка…</div>
+      <div class="lv-hint-box" id="lv-hint-box"></div>
+      <div class="lv-principle" id="lv-principle"></div>
+      <div class="choice-btns hidden" id="lv-choice-btns"></div>
+      <div class="lv-btns" id="lv-action-btns">
+        <button class="lv-hint-btn" onclick="lvHint()">&#128161; Подсказка</button>
+        <button class="btn-primary hidden" id="lv-next-btn" onclick="lvFinish()">Следующее &#8594;</button>
+      </div>
+      <div id="lv-counter" style="font-size:11px;color:var(--gray);font-weight:600;margin-top:4px"></div>
+    </div>
+  </div>
+
+  <!-- Done screen -->
+  <div id="lv-sec-done" class="hidden learn-content" style="justify-content:center">
+    <div class="lesson-done">
+      <div class="ld-icon">&#127942;</div>
+      <div class="ld-title" id="ld-title">Урок завершён!</div>
+      <div class="ld-sub" id="ld-sub">Вы успешно прошли это задание</div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-primary" onclick="lvRetry()">&#8634; Повторить</button>
+        <button class="btn-back" onclick="goBack()">&#8592; К урокам</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="lv-sec-theory" class="hidden"></div>
+  <div id="lv-sec-practice" class="hidden"></div>
 </div>
 </div>
 
@@ -1625,7 +1762,7 @@ function showView(id) {
     var el = document.getElementById('ntab-' + t);
     if (el) el.classList.remove('active');
   });
-  var map = { library:'library', opening:'variants', learn:'variants', 'pub-opening':'library', puzzle:'puzzles', top:'top', history:'top' };
+  var map = { library:'library', opening:'variants', learn:'variants', 'pub-opening':'library', puzzle:'puzzles', top:'top', history:'top', courses:'puzzles', 'course-detail':'puzzles', 'course-lesson':'puzzles' };
   var tab = map[id];
   if (tab) {
     var el = document.getElementById('ntab-' + tab);
@@ -3719,31 +3856,12 @@ function fbErrRu(code) {
 // ════════════════════════════════════════════════════════
 var AuthModule = (function() {
 
-  var _pendingEmail = '';
-  var _pendingPass  = '';
-  var _code         = '';
-  var _codeExpiry   = 0;
-
-  var EJS_SERVICE  = 'service_sn7ijmg';
-  var EJS_TEMPLATE = 'template_qcks60f';
-
   function isValidEmail(e) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
   }
 
-  function genCode() {
-    return String(Math.floor(100000 + Math.random() * 900000));
-  }
-
-  function setBtn(id, text, disabled) {
-    var b = document.getElementById(id);
-    if (!b) return;
-    b.textContent = text;
-    b.disabled    = disabled;
-  }
-
-  // ── Шаг 1: проверка формы → отправка кода ──
-  function sendCode() {
+  // ── Регистрация ──
+  function register() {
     var email = document.getElementById('auth-reg-email').value.trim();
     var pass  = document.getElementById('auth-reg-pass').value;
     var pass2 = document.getElementById('auth-reg-pass2').value;
@@ -3751,70 +3869,20 @@ var AuthModule = (function() {
     if (!isValidEmail(email)) { setAuthMsg('Неверный формат email', 'err'); return; }
     if (pass.length < 6)      { setAuthMsg('Пароль минимум 6 символов', 'err'); return; }
     if (pass !== pass2)       { setAuthMsg('Пароли не совпадают', 'err'); return; }
-    _pendingEmail = email;
-    _pendingPass  = pass;
-    _doSend();
-  }
-
-  function _doSend() {
-    _code       = genCode();
-    _codeExpiry = Date.now() + 10 * 60 * 1000;
-    setAuthMsg('Отправляем код…', 'info');
-    setBtn('auth-reg-send-btn', 'Отправка…', true);
-    emailjs.send(EJS_SERVICE, EJS_TEMPLATE, {
-      to_email: _pendingEmail,
-      code:     _code
-    }).then(function() {
-      setBtn('auth-reg-send-btn', 'Получить код →', false);
-      setAuthMsg('');
-      document.getElementById('auth-reg-step1').classList.add('hidden');
-      document.getElementById('auth-reg-step2').classList.remove('hidden');
-      document.getElementById('auth-reg-sent-to').textContent =
-        'Код отправлен на ' + _pendingEmail;
-      document.getElementById('auth-reg-code').value = '';
-      setTimeout(function(){ document.getElementById('auth-reg-code').focus(); }, 100);
-    }).catch(function(err) {
-      setBtn('auth-reg-send-btn', 'Получить код →', false);
-      setAuthMsg('Ошибка отправки: ' + (err.text || JSON.stringify(err)), 'err');
-    });
-  }
-
-  // ── Шаг 2: проверка кода → создание аккаунта ──
-  function confirmCode() {
-    var entered = document.getElementById('auth-reg-code').value.trim();
-    if (!entered || entered.length !== 6) {
-      setAuthMsg('Введите 6-значный код', 'err'); return;
-    }
-    if (Date.now() > _codeExpiry) {
-      setAuthMsg('Код истёк — нажмите «Отправить повторно»', 'err'); return;
-    }
-    if (entered !== _code) {
-      setAuthMsg('Неверный код, попробуйте ещё раз', 'err');
-      document.getElementById('auth-reg-code').value = '';
-      document.getElementById('auth-reg-code').focus();
-      return;
-    }
+    var btn = document.getElementById('auth-reg-btn');
+    if (btn) { btn.textContent = 'Создаём…'; btn.disabled = true; }
     setAuthMsg('Создаём аккаунт…', 'info');
-    fbAuth.createUserWithEmailAndPassword(_pendingEmail, _pendingPass)
+    fbAuth.createUserWithEmailAndPassword(email, pass)
       .then(function(cred) {
-        return CloudSync.initUserDoc(cred.user.uid, _pendingEmail).then(function() {
-          _pendingEmail = ''; _pendingPass = ''; _code = '';
+        return CloudSync.initUserDoc(cred.user.uid, email).then(function() {
           setAuthMsg('✓ Добро пожаловать!', 'ok');
-          setTimeout(closeAuthModal, 1200);
+          setTimeout(closeAuthModal, 1000);
         });
       })
-      .catch(function(e) { setAuthMsg(fbErrRu(e.code), 'err'); });
-  }
-
-  function resendCode() {
-    if (!_pendingEmail) return;
-    _doSend();
-  }
-
-  function backToRegStep1() {
-    document.getElementById('auth-reg-step2').classList.add('hidden');
-    document.getElementById('auth-reg-step1').classList.remove('hidden');
-    setAuthMsg('');
+      .catch(function(e) {
+        if (btn) { btn.textContent = 'Зарегистрироваться ✓'; btn.disabled = false; }
+        setAuthMsg(fbErrRu(e.code), 'err');
+      });
   }
 
   // ── Вход ──────────────────────────────────
@@ -3848,12 +3916,7 @@ var AuthModule = (function() {
       .catch(function(e) { showToast('Ошибка: ' + e.message, 'err'); });
   }
 
-  return {
-    sendCode: sendCode, confirmCode: confirmCode,
-    resendCode: resendCode, backToRegStep1: backToRegStep1,
-    login: login, logout: logout,
-    resetPassword: resetPassword, resendVerification: resendVerification
-  };
+  return { register: register, login: login, logout: logout, resetPassword: resetPassword };
 })();
 
 
@@ -5863,9 +5926,725 @@ function rsSaveAccount(){
 
 document.getElementById('acc-overlay').addEventListener('click',function(e){ if(e.target===this) rsCloseAccount(); });
 
+
+
+
+// ════════════════════════════════════════════════════════
+//   COURSES MODULE — отображение курсов и прохождение уроков
+// ════════════════════════════════════════════════════════
+var CoursesModule = (function(){
+  var _courses=[],_lessons=[],_steps=[];
+  var _curCourse=null,_curLesson=null,_stepIdx=0;
+  var _theoryBoard=null,_practiceBoard=null,_practiceChess=null;
+  var _pvLocked=false,_pvHadErr=false,_pvSel=null,_pvSubIdx=0;
+  var _pvErrors=0,_pvHints=0;
+
+  function H(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function G(id){return document.getElementById(id);}
+  function setProgress(pct){var f=G('lv-progress-fill');if(f)f.style.width=Math.max(0,Math.min(100,pct))+'%';}
+  function setBadge(cls,txt){var b=G('lv-badge');if(b){b.className='phase-badge phase-'+cls;b.textContent=txt;}}
+  function showPhase(p){
+    // lv-sec-theory и lv-sec-practice — заглушки, не используются
+    var done=G('lv-sec-done');
+    if(done)done.classList.toggle('hidden',p!=='done');
+    var task=G('lv-sec-task');
+    if(task)task.classList.toggle('hidden',p==='done');
+  }
+
+  // ── Draw expl arrows ──────────────────────────────────
+  function drawExplArrows(arrows,boardId,svgId,orientation){
+    var svg=G(svgId);if(!svg)return;svg.innerHTML='';
+    if(!arrows||!arrows.length)return;
+    var boardEl=G(boardId);if(!boardEl)return;
+    var inner=boardEl.querySelector('.board-b72b1')||boardEl;
+    // Для абсолютного SVG внутри обёртки используем относительные координаты
+    var sz=inner.offsetWidth/8||inner.getBoundingClientRect().width/8;
+    var bRect=inner.getBoundingClientRect();
+    var svgRect=svg.getBoundingClientRect();
+    var flip=orientation==='black';
+    var ns='http://www.w3.org/2000/svg';
+    svg.style.width=bRect.width+'px';svg.style.height=bRect.height+'px';
+    function ctr(sq){var f=sq.charCodeAt(0)-97,r=parseInt(sq[1])-1,col=flip?7-f:f,row=flip?r:7-r;return{x:(bRect.left-svgRect.left)+col*sz+sz/2,y:(bRect.top-svgRect.top)+row*sz+sz/2};}
+    arrows.forEach(function(a){
+      var color=a.color||'rgba(15,189,68,.85)';
+      if(a.from===a.to){
+        var f2=a.from.charCodeAt(0)-97,r2=parseInt(a.from[1])-1,col2=flip?7-f2:f2,row2=flip?r2:7-r2;
+        var rect=document.createElementNS(ns,'rect');
+        rect.setAttribute('x',(bRect.left-svgRect.left)+col2*sz);rect.setAttribute('y',(bRect.top-svgRect.top)+row2*sz);
+        rect.setAttribute('width',sz);rect.setAttribute('height',sz);rect.setAttribute('fill',color.replace('.85)','.4)'));
+        svg.appendChild(rect);return;
+      }
+      var fc=ctr(a.from),tc=ctr(a.to),dx=tc.x-fc.x,dy=tc.y-fc.y,len=Math.sqrt(dx*dx+dy*dy);
+      if(len<1)return;
+      var ux=dx/len,uy=dy/len,px=-uy,py=ux,lw=sz*.155,hl=sz*.34,hw=sz*.25;
+      var sx=tc.x-ux*hl,sy=tc.y-uy*hl;
+      var line=document.createElementNS(ns,'line');
+      line.setAttribute('x1',fc.x);line.setAttribute('y1',fc.y);line.setAttribute('x2',sx);line.setAttribute('y2',sy);
+      line.setAttribute('stroke',color);line.setAttribute('stroke-width',lw);line.setAttribute('stroke-linecap','round');
+      var tri=document.createElementNS(ns,'polygon');
+      tri.setAttribute('points',tc.x+','+tc.y+' '+(sx+px*hw)+','+(sy+py*hw)+' '+(sx-px*hw)+','+(sy-py*hw));
+      tri.setAttribute('fill',color);
+      svg.appendChild(line);svg.appendChild(tri);
+    });
+  }
+
+  // ── Courses ───────────────────────────────────────────
+  function loadCourses(){
+    var el=G('courses-container');
+    if(el)el.innerHTML='<div class="lib-loading"><div class="odb-spinner"></div>Загрузка…</div>';
+    fbDb.collection('courses').get().then(function(snap){
+      _courses=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());})
+        .filter(function(c){return (c.lessonCount||0)>0;})
+        .sort(function(a,b){return(a.order||0)-(b.order||0);});
+      if(!el)return;
+      if(!_courses.length){el.innerHTML='<div class="empty-state">Курсов пока нет</div>';return;}
+      el.innerHTML='<div class="courses-grid">'+_courses.map(function(c){
+        var done=parseInt(localStorage.getItem('cprog_'+c.id)||'0');
+        var total=c.lessonCount||0;
+        return '<div class="course-card" onclick="CoursesModule.openCourse(\''+c.id+'\')">' +
+          '<div class="cc-icon">'+(c.icon||'📚')+'</div>'+
+          '<div class="cc-title">'+H(c.title)+'</div>'+
+          '<div class="cc-desc">'+H(c.description||'')+'</div>'+
+          '<div class="cc-foot">'+
+            '<span class="cc-count">'+total+(total===1?' урок':total<5?' урока':' уроков')+'</span>'+
+            (done>0?'<span class="cc-prog">'+done+'/'+total+' пройдено</span>':'')+
+          '</div></div>';
+      }).join('')+'</div>';
+    }).catch(function(e){if(el)el.innerHTML='<div class="empty-state">Ошибка: '+H(e.message)+'</div>';});
+  }
+
+  // ── Course detail ─────────────────────────────────────
+  function openCourse(courseId){
+    _curCourse=_courses.find(function(c){return c.id===courseId;});
+    if(!_curCourse)return;
+    G('cd-title').textContent=(_curCourse.icon||'')+'  '+(_curCourse.title||'');
+    G('cd-desc').textContent=_curCourse.description||'';
+    var el=G('cd-lessons-list');
+    el.innerHTML='<div class="lib-loading"><div class="odb-spinner"></div>Загрузка…</div>';
+    fbDb.collection('courses').doc(courseId).collection('lessons').get()
+      .then(function(snap){
+        _lessons=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());})
+          .filter(function(l){return l.published!==false;})
+          .sort(function(a,b){return(a.order||0)-(b.order||0);});
+        var done=_lessons.filter(function(l){return !!localStorage.getItem('ldone_'+l.id);}).length;
+        G('cd-progress').textContent=done+' / '+_lessons.length+' пройдено';
+        if(!_lessons.length){el.innerHTML='<div class="empty-state">Уроков пока нет</div>';return;}
+        el.innerHTML=_lessons.map(function(l,i){
+          var isDone=!!localStorage.getItem('ldone_'+l.id);
+          var sc=(l.steps||[]).length;
+          return '<div class="cl-item'+(isDone?' done':'')+'" onclick="CoursesModule.openLesson(\''+l.id+'\')">' +
+            '<div class="cl-num">'+(isDone?'✓':(i+1))+'</div>'+
+            '<div class="cl-body">'+
+              '<div class="cl-title">'+H(l.title||'Урок '+(i+1))+'</div>'+
+              '<div class="cl-preview">'+(sc?sc+' '+(sc===1?'задание':sc<5?'задания':'заданий')+' · ':'')+H((l.commentary||'').slice(0,60))+'</div>'+
+            '</div>'+
+            '<div class="cl-arrow">›</div>'+
+          '</div>';
+        }).join('');
+      }).catch(function(e){el.innerHTML='<div class="empty-state">Ошибка: '+H(e.message)+'</div>';});
+    goTo('course-detail');
+  }
+
+  // ── Open lesson ───────────────────────────────────────
+  function openLesson(lessonId){
+    _curLesson=_lessons.find(function(l){return l.id===lessonId;});
+    if(!_curLesson)return;
+    // Поддержка старого формата (flat) и нового (steps[])
+    _steps=(_curLesson.steps||[]).map(function(s){return Object.assign({},s);});
+    if(!_steps.length&&(_curLesson.taskType||(_curLesson.moveSol&&_curLesson.moveSol.length))){
+      _steps=[{
+        fen:_curLesson.fen,orientation:_curLesson.orientation||'white',
+        taskType:_curLesson.taskType||'move',comment:'',
+        moveSol:_curLesson.moveSol||[],arrSol:_curLesson.arrSol||[],
+        hlSol:_curLesson.hlSol||[],choiceQ:_curLesson.choiceQ||'',
+        choiceOpts:_curLesson.choiceOpts||[],choiceExpl:_curLesson.choiceExpl||'',
+        explArrows:_curLesson.explArrows||[]
+      }];
+    }
+    _stepIdx=0;_pvErrors=0;_pvHints=0;
+    G('lv-title').textContent=_curLesson.title||'Урок';
+    setBadge('hints','Задание');
+    setProgress(0);
+    // Комментарий к уроку
+    var comm=G('lv-commentary');
+    if(comm){
+      comm.textContent=_curLesson.commentary||'';
+      comm.style.display=(_curLesson.commentary&&_curLesson.commentary.trim())?'block':'none';
+    }
+    goTo('course-lesson');
+    setTimeout(function(){loadStep(0);},80);
+  }
+
+  function goPractice(){/* не используется */}
+
+  function updateTurnLbl(myCol){
+    var lbl=G('lv-turn-lbl');if(!lbl)return;
+    var isW=myCol==='white';
+    lbl.innerHTML='<span style="width:12px;height:12px;border-radius:50%;background:'+(isW?'#fff;border:1.5px solid #555':'#222;border:1.5px solid #aaa')+';display:inline-block;flex-shrink:0"></span><span>Ваш ход ('+(isW?'белые':'чёрные')+')</span>';
+  }
+
+  // ── MOVE handler ──────────────────────────────────────
+
+  // ── Show annotation badge on destination square ──────
+  function showAnnotation(toSq, annotation, orientation){
+    if(!annotation) return;
+    var bel=G('lv-practice-board'); if(!bel) return;
+    var inner=bel.querySelector('.board-b72b1')||bel;
+    var r=inner.getBoundingClientRect();
+    var sz=r.width/8;
+    var flip=(orientation||'white')==='black';
+    var f=toSq.charCodeAt(0)-97, rk=parseInt(toSq[1])-1;
+    var col=flip?7-f:f, row=flip?rk:7-rk;
+    // Bottom-right corner of the square
+    var x=r.left+(col+0.85)*sz;
+    var y=r.top+(row+0.2)*sz;
+
+    // Remove old badge
+    var old=document.getElementById('move-anno-el');
+    if(old) old.remove();
+
+    var badge=document.createElement('div');
+    badge.id='move-anno-el';
+    badge.className='move-anno-badge';
+    badge.textContent=annotation;
+    badge.style.left=x+'px';
+    badge.style.top=y+'px';
+    document.body.appendChild(badge);
+
+    // Keep visible until next move / next step
+    return badge;
+  }
+  function clearAnnotation(){
+    var el=document.getElementById('move-anno-el');
+    if(el) el.remove();
+  }
+
+  function handleMoveInput(src,tgt,step){
+    var sol=step.moveSol||[];
+    if(!sol.length)return false;
+    var hasSeq=sol.some(function(m){return m.player===false;});
+
+    if(hasSeq){
+      // Sequence mode: check against expected player move at _pvSubIdx
+      var playerMoves=sol.filter(function(m){return m.player!==false;});
+      // _pvSubIdx tracks which player move we're on
+      var exp=null;
+      var playerIdx=0;
+      for(var i=0;i<sol.length;i++){
+        if(sol[i].player!==false){
+          if(playerIdx===_pvSubIdx){exp=sol[i];break;}
+          playerIdx++;
+        }
+      }
+      if(!exp)return false;
+      var mv=_practiceChess.move({from:src,to:tgt,promotion:'q'});
+      if(!mv)return false;
+      if(src===exp.from&&tgt===exp.to){
+        _practiceBoard.position(_practiceChess.fen(),false);
+        _pvSubIdx++;
+        // Play computer responses until next player move
+        setTimeout(function(){
+          playCompResponses(sol,_pvSubIdx,step);
+        },400);
+        return true;
+      } else {
+        _practiceChess.undo();
+        _pvHadErr=true;_pvErrors++;
+        markWrong();
+        return false;
+      }
+    } else {
+      // Single mode: any of the recorded moves is correct
+      var mv=_practiceChess.move({from:src,to:tgt,promotion:'q'});
+      if(!mv)return false;
+      var isCorrect=sol.some(function(m){return m.from===src&&m.to===tgt;});
+      if(isCorrect){
+        // Show comment for this move if available
+        var matchedMove=sol.find(function(m){return m.from===src&&m.to===tgt;});
+        _practiceBoard.position(_practiceChess.fen(),false);
+        // Clear expl arrows after move
+        var esvg=G('lv-expl-svg');if(esvg)esvg.innerHTML='';
+        if(matchedMove&&matchedMove.annotation) showAnnotation(tgt,matchedMove.annotation,step.orientation||'white');
+        markCorrect('✓ Правильно!',step,matchedMove&&matchedMove.comment);
+        return true;
+      } else {
+        _practiceChess.undo();
+        _pvHadErr=true;_pvErrors++;
+        markWrong();
+        return false;
+      }
+    }
+  }
+
+  function playCompResponses(sol,playerMoveIdx,step){
+    // Find all computer moves until the next player move
+    var playerCount=0;
+    var compMoves=[];
+    for(var i=0;i<sol.length;i++){
+      if(sol[i].player!==false){
+        if(playerCount===playerMoveIdx){break;}
+        playerCount++;
+      } else if(playerCount===playerMoveIdx-1){
+        // This computer move comes between playerMoveIdx-1 and playerMoveIdx player moves
+        // Actually: collect comp moves that come after playerMoveIdx-1 player move
+      }
+    }
+    // Simpler: find sequential comp moves after all player moves up to playerMoveIdx
+    // Rebuild position up to current player idx
+    var allPlayerMoves=sol.filter(function(m){return m.player!==false;});
+    var allSeq=sol; // full sequence
+    // Count how many player moves done = playerMoveIdx
+    // find the position in allSeq after playerMoveIdx player moves
+    var playerDone=0;
+    var seqPos=0;
+    for(var j=0;j<allSeq.length;j++){
+      if(allSeq[j].player!==false) playerDone++;
+      if(playerDone===playerMoveIdx){seqPos=j+1;break;}
+    }
+    // Collect comp moves starting at seqPos
+    var compSeq=[];
+    for(var k=seqPos;k<allSeq.length;k++){
+      if(allSeq[k].player===false) compSeq.push(allSeq[k]);
+      else break;
+    }
+    if(!compSeq.length){
+      // No more computer moves — check if sequence complete
+      var totalPlayerMoves=allSeq.filter(function(m){return m.player!==false;}).length;
+      if(playerMoveIdx>=totalPlayerMoves){
+        var lastMove=allPlayerMoves[playerMoveIdx-1];
+        var lastComment=lastMove&&lastMove.comment&&lastMove.comment.trim()?lastMove.comment:'';
+        markCorrect('✓ Отлично! Вся последовательность верна!',step,lastComment);
+      } else {
+        // Next player move expected — show its comment
+        var nextPlayerMove=allPlayerMoves[playerMoveIdx];
+        var st=G('lv-status');
+        var msg=(nextPlayerMove&&nextPlayerMove.comment&&nextPlayerMove.comment.trim())
+          ?nextPlayerMove.comment:'Найдите следующий ход';
+        if(st){st.textContent=msg;st.className='lv-status';}
+      }
+      return;
+    }
+    // Play comp moves one by one with delay
+    function playNext(idx){
+      if(idx>=compSeq.length){
+        // After comp moves, check if sequence complete or prompt next player move
+        var totalPlayerMoves2=allSeq.filter(function(m){return m.player!==false;}).length;
+        if(playerMoveIdx>=totalPlayerMoves2){
+          var lastMove2=allPlayerMoves[playerMoveIdx-1];
+          var lastComment2=lastMove2&&lastMove2.comment&&lastMove2.comment.trim()?lastMove2.comment:'';
+          markCorrect('✓ Отлично! Вся последовательность верна!',step,lastComment2);
+        } else {
+          var nextMv=allPlayerMoves[playerMoveIdx];
+          var st=G('lv-status');
+          var msg2=(nextMv&&nextMv.comment&&nextMv.comment.trim())
+            ?nextMv.comment:'Найдите следующий ход';
+          if(st){st.textContent=msg2;st.className='lv-status';}
+        }
+        return;
+      }
+      var cm=compSeq[idx];
+      _practiceChess.move({from:cm.from,to:cm.to,promotion:cm.promotion||'q'});
+      _practiceBoard.position(_practiceChess.fen(),false);
+      setTimeout(function(){playNext(idx+1);},500);
+    }
+    playNext(0);
+  }
+
+  // ── ARROWS handler ────────────────────────────────────
+  function attachArrRC(step,orientation){
+    _pvSubIdx=0;
+    var bel=G('lv-practice-board');
+    if(!bel)return;
+    var rcFrom=null;
+    var ns='http://www.w3.org/2000/svg';
+
+    // Live preview SVG
+    var liveSvg=G('lv-live-svg');
+    if(!liveSvg){
+      liveSvg=document.createElementNS(ns,'svg');
+      liveSvg.id='lv-live-svg';
+      liveSvg.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:16';
+      document.body.appendChild(liveSvg);
+    }
+    liveSvg.innerHTML='';
+
+    function sqCenter(sq){
+      var inner=bel.querySelector('.board-b72b1')||bel;
+      var r=inner.getBoundingClientRect(), sz=r.width/8;
+      var flip=(orientation||'white')==='black';
+      var f=sq.charCodeAt(0)-97, rk=parseInt(sq[1])-1;
+      var col=flip?7-f:f, row=flip?rk:7-rk;
+      return{x:r.left+col*sz+sz/2, y:r.top+row*sz+sz/2, sz:sz};
+    }
+
+    function hlFrom(sq){
+      var inner=bel.querySelector('.board-b72b1')||bel;
+      var el=inner.querySelector('[data-square="'+sq+'"]');
+      if(el) el.style.background='rgba(90,180,245,.5)';
+    }
+    function clearHl(){
+      var inner=bel.querySelector('.board-b72b1')||bel;
+      inner.querySelectorAll('[data-square]').forEach(function(el){el.style.background='';});
+    }
+
+    function drawLive(from,cx,cy){
+      liveSvg.innerHTML='';
+      if(!from)return;
+      var c=sqCenter(from), sz=c.sz;
+      var dx=cx-c.x, dy=cy-c.y, len=Math.sqrt(dx*dx+dy*dy);
+      if(len<sz*0.4)return;
+      var ux=dx/len,uy=dy/len,px=-uy,py=ux;
+      var lw=sz*.13, hl=sz*.28, hw=sz*.2, col='rgba(200,241,53,.75)';
+      var tx=c.x+ux*(len-sz*0.1), ty=c.y+uy*(len-sz*0.1);
+      var sx=tx-ux*hl, sy=ty-uy*hl;
+      var line=document.createElementNS(ns,'line');
+      line.setAttribute('x1',c.x);line.setAttribute('y1',c.y);
+      line.setAttribute('x2',sx);line.setAttribute('y2',sy);
+      line.setAttribute('stroke',col);line.setAttribute('stroke-width',lw);
+      line.setAttribute('stroke-linecap','round');
+      var tri=document.createElementNS(ns,'polygon');
+      tri.setAttribute('points',tx+','+ty+' '+(sx+px*hw)+','+(sy+py*hw)+' '+(sx-px*hw)+','+(sy-py*hw));
+      tri.setAttribute('fill',col);
+      liveSvg.appendChild(line);liveSvg.appendChild(tri);
+    }
+
+    // Клонируем элемент чтобы убрать все старые слушатели
+    var parent=bel.parentNode;
+    var fresh=bel.cloneNode(true);
+    parent.replaceChild(fresh,bel);
+    bel=fresh;
+
+    bel.addEventListener('mousedown',function(e){
+      if(e.button!==2)return;e.preventDefault();e.stopPropagation();
+      rcFrom=sqFromBoard(e.clientX,e.clientY,orientation);
+      if(rcFrom){hlFrom(rcFrom);drawLive(rcFrom,e.clientX,e.clientY);}
+    },true);
+    bel.addEventListener('mousemove',function(e){
+      if(!(e.buttons&2))return;
+      drawLive(rcFrom,e.clientX,e.clientY);
+    },true);
+    bel.addEventListener('mouseup',function(e){
+      if(e.button!==2)return;e.preventDefault();e.stopPropagation();
+      liveSvg.innerHTML='';clearHl();
+      if(!rcFrom)return;
+      var to=sqFromBoard(e.clientX,e.clientY,orientation);
+      if(!to||to===rcFrom){rcFrom=null;return;}
+      checkArrowInput(rcFrom,to,step,orientation);
+      rcFrom=null;
+    },true);
+    bel.addEventListener('contextmenu',function(e){e.preventDefault();e.stopPropagation();},true);
+  }
+
+  function sqFromBoard(cx,cy,orientation){
+    var el=G('lv-practice-board');if(!el)return null;
+    var inner=el.querySelector('.board-b72b1')||el;
+    var r=inner.getBoundingClientRect();
+    if(cx<r.left||cx>r.right||cy<r.top||cy>r.bottom)return null;
+    var sz=r.width/8,col=Math.floor((cx-r.left)/sz),row=Math.floor((cy-r.top)/sz);
+    if(col<0||col>7||row<0||row>7)return null;
+    var flip=(orientation||'white')==='black';
+    return String.fromCharCode(97+(flip?7-col:col))+(flip?row+1:7-row+1);
+  }
+
+  function checkArrowInput(from,to,step,orientation){
+    var sol=step.arrSol||[];
+    if(_pvSubIdx>=sol.length)return;
+    var exp=sol[_pvSubIdx];
+    // Проверяем только клетки (from/to), цвет не важен
+    if(from===exp.from&&to===exp.to){
+      _pvSubIdx++;
+      drawPracticeArrow(from,to,'rgba(15,189,68,.85)',orientation);
+      if(_pvSubIdx>=sol.length){
+        markCorrect('✓ Все стрелки верно!',step);
+      } else {
+        // Показать комментарий к следующей стрелке
+        var st=G('lv-status');
+        var nextCmt=(sol[_pvSubIdx]&&sol[_pvSubIdx].comment&&sol[_pvSubIdx].comment.trim())
+          ?sol[_pvSubIdx].comment:'Нарисуйте следующую стрелку ПКМ';
+        if(st){st.textContent=nextCmt;st.className='lv-status';}
+      }
+    } else {
+      _pvHadErr=true;_pvErrors++;
+      // Показать "Неверно" на короткое время, потом вернуть комментарий задания
+      var st=G('lv-status');
+      var taskCmt=(exp.comment&&exp.comment.trim())?exp.comment:'Нарисуйте стрелку ПКМ';
+      if(st){st.textContent='✗ Неверно — попробуйте ещё раз';st.className='lv-status err';}
+      setTimeout(function(){
+        if(st){st.textContent=taskCmt;st.className='lv-status';}
+      },1200);
+    }
+  }
+
+  function drawPracticeArrow(from,to,color,orientation){
+    var bel=G('lv-practice-board');if(!bel)return;
+    var inner=bel.querySelector('.board-b72b1')||bel;
+    var bRect=inner.getBoundingClientRect();
+    var sz=bRect.width/8,flip=(orientation||'white')==='black';
+    var ns='http://www.w3.org/2000/svg';
+    var svg=G('lv-prac-svg');
+    if(!svg){svg=document.createElementNS(ns,'svg');svg.id='lv-prac-svg';svg.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:15';document.body.appendChild(svg);}
+    function ctr(sq){var f=sq.charCodeAt(0)-97,r=parseInt(sq[1])-1,col=flip?7-f:f,row=flip?r:7-r;return{x:bRect.left+col*sz+sz/2,y:bRect.top+row*sz+sz/2};}
+    var fc=ctr(from),tc=ctr(to),dx=tc.x-fc.x,dy=tc.y-fc.y,len=Math.sqrt(dx*dx+dy*dy);
+    if(len<1)return;
+    var ux=dx/len,uy=dy/len,px=-uy,py=ux,lw=sz*.155,hl=sz*.34,hw=sz*.25;
+    var sx=tc.x-ux*hl,sy=tc.y-uy*hl;
+    var g=document.createElementNS(ns,'g');
+    var line=document.createElementNS(ns,'line');
+    line.setAttribute('x1',fc.x);line.setAttribute('y1',fc.y);line.setAttribute('x2',sx);line.setAttribute('y2',sy);
+    line.setAttribute('stroke',color);line.setAttribute('stroke-width',lw);line.setAttribute('stroke-linecap','round');
+    var tri=document.createElementNS(ns,'polygon');
+    tri.setAttribute('points',tc.x+','+tc.y+' '+(sx+px*hw)+','+(sy+py*hw)+' '+(sx-px*hw)+','+(sy-py*hw));
+    tri.setAttribute('fill',color);
+    g.appendChild(line);g.appendChild(tri);svg.appendChild(g);
+  }
+
+  // ── HIGHLIGHTS handler ────────────────────────────────
+  function attachHlRC(step,orientation){
+    var sol=step.hlSol||[];_pvSubIdx=0;
+    var bel=G('lv-practice-board');if(!bel)return;
+    bel.addEventListener('mousedown',function(e){
+      if(e.button!==2)return;e.preventDefault();e.stopPropagation();
+      var sq=sqFromBoard(e.clientX,e.clientY,orientation);
+      if(sq)checkHlInput(sq,step);
+    },true);
+    bel.addEventListener('contextmenu',function(e){e.preventDefault();e.stopPropagation();},true);
+  }
+
+  function checkHlInput(sq,step){
+    var sol=step.hlSol||[];
+    if(_pvSubIdx>=sol.length)return;
+    var exp=sol[_pvSubIdx];
+    var expSq=typeof exp==='string'?exp:exp.sq;
+    if(sq===expSq){
+      _pvSubIdx++;
+      var bel=G('lv-practice-board');
+      if(bel){var sqEl=bel.querySelector('[data-square="'+expSq+'"]');if(sqEl)sqEl.style.background='rgba(15,189,68,.45)';}
+      if(_pvSubIdx>=sol.length){
+        markCorrect('✓ Все клетки верно!',step);
+      } else {
+        var nextExp=sol[_pvSubIdx];
+        var nextCmt=(nextExp&&typeof nextExp==='object'&&nextExp.comment&&nextExp.comment.trim())?nextExp.comment:'Нажмите ПКМ на следующую клетку';
+        var st=G('lv-status');if(st){st.textContent=nextCmt;st.className='lv-status';}
+      }
+    } else {
+      _pvHadErr=true;_pvErrors++;
+      markWrong('Неверная клетка — попробуйте снова');
+      setTimeout(function(){
+        var st=G('lv-status');
+        var exp2=sol[_pvSubIdx];
+        var cmt=(exp2&&typeof exp2==='object'&&exp2.comment&&exp2.comment.trim())?exp2.comment:'Нажмите ПКМ на нужную клетку';
+        if(st){st.textContent=cmt;st.className='lv-status';}
+      },1400);
+    }
+  }
+
+  // ── CHOICE handler ────────────────────────────────────
+  function renderChoiceTask(step){
+    var opts=step.choiceOpts||[];
+    var q=(step.comment&&step.comment.trim())?step.comment:(step.choiceQ||'Выберите правильный ответ');
+    var st=G('lv-status');if(st){st.textContent=q;st.className='lv-status';}
+    var cb=G('lv-choice-btns');cb.classList.remove('hidden');
+    cb.innerHTML=opts.map(function(o,i){
+      return '<button class="choice-opt-btn" onclick="CoursesModule._onChoice('+i+')" data-idx="'+i+'">'+H(o.text||'Вариант '+(i+1))+'</button>';
+    }).join('');
+    G('lv-action-btns').style.display='none';
+  }
+
+  function onChoice(idx){
+    var step=_steps[_stepIdx];
+    var opts=step.choiceOpts||[];
+    var opt=opts[idx];if(!opt)return;
+    var btns=G('lv-choice-btns').querySelectorAll('.choice-opt-btn');
+    btns.forEach(function(b){b.disabled=true;});
+    if(opt.correct){
+      btns[idx].classList.add('correct');
+      if(step.choiceExpl){var pr=G('lv-principle');pr.textContent='💡 '+step.choiceExpl;pr.style.display='block';}
+      markCorrect('✓ Правильно!',step);
+    } else {
+      btns[idx].classList.add('wrong');
+      _pvHadErr=true;_pvErrors++;
+      opts.forEach(function(o,i){if(o.correct)btns[i].classList.add('correct');});
+      var st=G('lv-status');if(st){st.textContent='✗ Неверно';st.className='lv-status err';}
+      if(step.choiceExpl){var pr2=G('lv-principle');pr2.textContent='💡 '+step.choiceExpl;pr2.style.display='block';}
+      setTimeout(function(){G('lv-next-btn').classList.remove('hidden');G('lv-action-btns').style.display='';},800);
+      return;
+    }
+    setTimeout(function(){G('lv-next-btn').classList.remove('hidden');G('lv-action-btns').style.display='';},400);
+  }
+
+  // ── Correct / Wrong helpers ───────────────────────────
+  function markCorrect(msg,step,commentOverride){
+    var st=G('lv-status');
+    var comment=(commentOverride&&commentOverride.trim())?commentOverride:
+                (step&&step.comment&&step.comment.trim())?step.comment:'';
+    _pvLocked=true;
+    if(comment){
+      // Показываем "✓ Верно!" на секунду, потом комментарий
+      if(st){st.textContent='✓ Верно!';st.className='lv-status ok';}
+      setTimeout(function(){
+        if(st){
+          st.textContent=comment;
+          st.className='lv-status ok';
+        }
+        G('lv-next-btn').classList.remove('hidden');
+      },800);
+    } else {
+      if(st){st.textContent='✓ Верно!';st.className='lv-status ok';}
+      setTimeout(function(){G('lv-next-btn').classList.remove('hidden');},300);
+    }
+  }
+  function markWrong(msg){
+    var st=G('lv-status');if(st){st.textContent=msg||'✗ Неверно — попробуйте снова';st.className='lv-status err';}
+    var bw=G('lv-practice-board');
+    if(bw){bw.style.animation='';bw.offsetHeight;bw.style.animation='shake .4s ease';setTimeout(function(){bw.style.animation='';},1400);}
+  }
+
+  // ── Hint ──────────────────────────────────────────────
+  function hint(){
+    var step=_steps[_stepIdx];if(!step)return;
+    var hintText='';
+    if(step.taskType==='move'){var m=(step.moveSol||[])[0];hintText=m?'Правильный ход: '+m.san:'';}
+    else if(step.taskType==='arrows'){var a=(step.arrSol||[])[_pvSubIdx];hintText=a?'Стрелка от '+a.from+' до '+a.to:'';}
+    else if(step.taskType==='highlights'){var h=(step.hlSol||[])[_pvSubIdx];hintText=h?'Клетка: '+(typeof h==='string'?h:h.sq):'';}
+    if(hintText){var hb=G('lv-hint-box');hb.textContent='💡 '+hintText;hb.classList.add('show');_pvHadErr=true;_pvHints++;}
+  }
+
+  // ── Load a single step ────────────────────────────────
+  function loadStep(idx){
+    if(idx>=_steps.length){finishLesson(false);return;}
+    var s=_steps[idx];
+    var totalSteps=_steps.length;
+    var isSlide = s.taskType === 'slide';
+    setBadge(isSlide?'review':'hints', isSlide
+      ?(totalSteps>1?'Слайд '+(idx+1)+'/'+totalSteps:'Слайд')
+      :(totalSteps>1?'Задание '+(idx+1)+'/'+totalSteps:'Задание'));
+    setProgress(Math.round((idx/Math.max(totalSteps,1))*100));
+    var taskSec=G('lv-sec-task');if(taskSec)taskSec.classList.remove('hidden');
+    G('lv-sec-done').classList.add('hidden');
+    _pvLocked=false;_pvHadErr=false;_pvSel=null;_pvSubIdx=0;
+    clearAnnotation();
+    var divider=G('lv-step-divider');
+    var lessonHasComm=_curLesson&&_curLesson.commentary&&_curLesson.commentary.trim();
+    var stepHasComm=s.comment&&s.comment.trim();
+    if(divider)divider.style.display=(lessonHasComm&&stepHasComm)?'block':'none';
+    var defaults={move:'Найдите правильный ход на доске',arrows:'Нарисуйте стрелку ПКМ на доске',highlights:'Нажмите ПКМ на нужную клетку',choice:'Выберите правильный ответ'};
+    var st=G('lv-status');
+    if(st){st.textContent=stepHasComm?s.comment:defaults[s.taskType]||'Найдите правильный ответ';st.className='lv-status';}
+    G('lv-hint-box').classList.remove('show');G('lv-hint-box').textContent='';
+    G('lv-principle').style.display='none';
+    G('lv-next-btn').classList.add('hidden');
+    G('lv-choice-btns').classList.add('hidden');
+    G('lv-action-btns').style.display='';
+    var ctr=G('lv-counter');if(ctr)ctr.textContent=totalSteps>1?'Задание '+(idx+1)+' из '+totalSteps:'';
+    var lbl=G('lv-turn-lbl');if(lbl)lbl.innerHTML='';
+    // ── Слайд — только текст, кнопка Далее ─────────────────
+    if(isSlide){
+      var hb2=G('lv-action-btns')&&G('lv-action-btns').querySelector('.lv-hint-btn');
+      if(hb2)hb2.style.display='none';
+      G('lv-next-btn').classList.remove('hidden');
+      G('lv-next-btn').textContent=idx<totalSteps-1?'Далее →':'Завершить ✓';
+      var fen0=s.fen||'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+      var ori0=s.orientation||'white';
+      if(_practiceBoard){_practiceBoard.destroy();_practiceBoard=null;}
+      setTimeout(function(){
+        _practiceBoard=Chessboard('lv-practice-board',{position:fen0,orientation:ori0,pieceTheme:PIECES,draggable:false,showNotation:true});
+        setTimeout(function(){drawExplArrows(s.explArrows||[],'lv-practice-board','lv-expl-svg',ori0);},80);
+      },60);
+      return;
+    }
+    // Restore hint button (may have been hidden by slide)
+    var hbr=G('lv-action-btns')&&G('lv-action-btns').querySelector('.lv-hint-btn');
+    if(hbr)hbr.style.display='';
+    G('lv-next-btn').textContent=idx<totalSteps-1?'Следующее →':'Завершить ✓';
+
+    var fen=s.fen||'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+    var orientation=s.orientation||'white';
+    if(_practiceBoard){_practiceBoard.destroy();_practiceBoard=null;}
+    var psvg=G('lv-prac-svg');if(psvg)psvg.innerHTML='';
+    function showExplArrows(){drawExplArrows(s.explArrows||[],'lv-practice-board','lv-expl-svg',orientation);}
+    setTimeout(function(){
+      if(s.taskType==='choice'){
+        _practiceBoard=Chessboard('lv-practice-board',{position:fen,orientation:orientation,pieceTheme:PIECES,draggable:false,showNotation:true});
+        setTimeout(showExplArrows,80);renderChoiceTask(s);
+      }else if(s.taskType==='arrows'){
+        _practiceBoard=Chessboard('lv-practice-board',{position:fen,orientation:orientation,pieceTheme:PIECES,draggable:false,showNotation:true});
+        setTimeout(showExplArrows,80);attachArrRC(s,orientation);
+      }else if(s.taskType==='highlights'){
+        _practiceBoard=Chessboard('lv-practice-board',{position:fen,orientation:orientation,pieceTheme:PIECES,draggable:false,showNotation:true});
+        setTimeout(showExplArrows,80);attachHlRC(s,orientation);
+      }else{
+        _practiceChess=new Chess();try{_practiceChess.load(fen);}catch(e){_practiceChess=new Chess();}
+        var myCol=_practiceChess.turn()==='w'?'white':'black';
+        _practiceBoard=Chessboard('lv-practice-board',{
+          position:fen,orientation:orientation||myCol,pieceTheme:PIECES,draggable:true,showNotation:true,
+          onDragStart:function(src,piece){if(_pvLocked)return false;if(myCol==='white'&&piece[0]==='b')return false;if(myCol==='black'&&piece[0]==='w')return false;},
+          onDrop:function(src,tgt){if(src===tgt)return'snapback';return handleMoveInput(src,tgt,s)?null:'snapback';},
+          onSnapEnd:function(){if(_practiceBoard)_practiceBoard.position(_practiceChess.fen(),false);}
+        });
+        var bel=G('lv-practice-board');
+        if(bel&&!bel._cv){bel._cv=true;bel.addEventListener('click',function(e){
+          if(_pvLocked)return;
+          var sqEl=$(e.target).closest('[data-square]');if(!sqEl.length)return;var sq=sqEl.data('square');
+          if(!_pvSel){var pc=_practiceChess.get(sq);if(!pc||pc.color!==_practiceChess.turn())return;
+            _pvSel=sq;bel.querySelectorAll('.highlight-sel').forEach(function(x){x.classList.remove('highlight-sel');});
+            var se=bel.querySelector('[data-square="'+sq+'"]');if(se)se.classList.add('highlight-sel');
+          }else{
+            if(sq===_pvSel){_pvSel=null;bel.querySelectorAll('.highlight-sel').forEach(function(x){x.classList.remove('highlight-sel');});return;}
+            var from=_pvSel;_pvSel=null;bel.querySelectorAll('.highlight-sel').forEach(function(x){x.classList.remove('highlight-sel');});
+            if(!handleMoveInput(from,sq,s)){var pc2=_practiceChess.get(sq);if(pc2&&pc2.color===_practiceChess.turn()){_pvSel=sq;var se2=bel.querySelector('[data-square="'+sq+'"]');if(se2)se2.classList.add('highlight-sel');}}
+          }
+        });}
+        updateTurnLbl(myCol);
+        setTimeout(showExplArrows,80);
+      }
+    },60);
+  }
+
+  // ── Next step or finish ───────────────────────────────
+  function nextStep(){
+    _stepIdx++;
+    if(_stepIdx>=_steps.length){finishLesson(false);}
+    else{loadStep(_stepIdx);}
+  }
+
+  // ── Finish lesson ─────────────────────────────────────
+  function finishLesson(noTask){
+    if(_curLesson)localStorage.setItem('ldone_'+_curLesson.id,'1');
+    if(_curCourse){var done=_lessons.filter(function(l){return !!localStorage.getItem('ldone_'+l.id);}).length;localStorage.setItem('cprog_'+_curCourse.id,done);}
+    setBadge('test','Готово!');setProgress(100);showPhase('done');
+    var task=G('lv-sec-task');if(task)task.classList.add('hidden');
+    var ti=G('ld-title'),su=G('ld-sub');
+    if(noTask){if(ti)ti.textContent='Материал изучен!';if(su)su.textContent='Переходите к следующему уроку';}
+    else if(_pvErrors===0){if(ti)ti.textContent='Отлично! Без ошибок 🏆';if(su)su.textContent='Идеальный результат!';}
+    else if(_pvErrors<=2){if(ti)ti.textContent='Хорошая работа! ✓';if(su)su.textContent='Можно повторить для закрепления';}
+    else{if(ti)ti.textContent='Урок завершён';if(su)su.textContent='Рекомендуем повторить';}
+    if(_theoryBoard){_theoryBoard.destroy();_theoryBoard=null;}
+    if(_practiceBoard){_practiceBoard.destroy();_practiceBoard=null;}
+    var psvg=G('lv-prac-svg');if(psvg)psvg.innerHTML='';
+  }
+
+  function retry(){if(_curLesson)openLesson(_curLesson.id);}
+
+  return{
+    loadCourses,openCourse,openLesson,goPractice,hint,
+    nextStep:nextStep,
+    finish:function(){nextStep();},
+    retry,
+    _onChoice:onChoice
+  };
+})();
+
+// ── Routing ───────────────────────────────────────────
+function openCourses(){openPuzzles();}
+function lvGoPractice(){CoursesModule.goPractice();}
+function lvHint(){CoursesModule.hint();}
+function lvFinish(){CoursesModule.finish();}
+function lvRetry(){CoursesModule.retry();}
+
+
 </script>
+
+
+
 </body>
-</html>
-</html>
-</html>f
 </html>
