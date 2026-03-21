@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://top-learn-chess.netlify.app/sitemap.xml
